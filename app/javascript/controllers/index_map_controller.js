@@ -8,7 +8,7 @@ export default class extends Controller {
   initialize() {
 
        this.map = new Y.Map(this.mapTarget.id,{configure : {
-         scrollWheelZoom : true// 
+         scrollWheelZoom : true//
        }});
 
        this.map.drawMap(new Y.LatLng(0, 0), 17, Y.LayerSetId.NORMAL);
@@ -21,5 +21,12 @@ export default class extends Controller {
        var sliderzoom = new Y.SliderZoomControlVertical();
        this.map.addControl(sliderzoom);
 
+  }
+
+  move(el){
+
+    var current_location = new Y.LatLng(el.target.dataset.lat,el.target.dataset.lon);
+
+    this.map.panTo(current_location, true);
   }
 }
