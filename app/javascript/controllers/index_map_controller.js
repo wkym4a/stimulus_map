@@ -3,7 +3,7 @@ import { Controller } from "stimulus"
 var markers = [];
 
 export default class extends Controller {
-  static targets = [ "map"]
+  static targets = [ "map","pin"]
 
   initialize() {
 
@@ -20,6 +20,14 @@ export default class extends Controller {
 
        var sliderzoom = new Y.SliderZoomControlVertical();
        this.map.addControl(sliderzoom);
+
+       var map_box = this.map;
+
+       this.pinTargets.forEach(function(pin){
+         var current_location = new Y.LatLng(pin.dataset.lat,pin.dataset.lon);
+         var marker = new Y.Marker(current_location);
+         map_box.addFeature(marker);
+       });
 
   }
 

@@ -31,7 +31,7 @@
           <td><%= link_to 'Show', map %></td>
           <td><%= link_to 'Edit', edit_map_path(map) %></td>
           <td><%= link_to 'Destroy', map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <td><input type="button" value="移動" data-action="click->index-map#move" data-lat = <%= map.latitude %>  data-lon = <%= map.longitude %> ></td>
+          <td><input type="button" value="移動" data-action="click->index-map#move" data-lat = <%= map.latitude %>  data-lon = <%= map.longitude %> <%# これ追記→ %>data-target="index-map.pin" <%# ←これ追記 %> ></td>
         </tr>
       <% end %>
     </tbody>
